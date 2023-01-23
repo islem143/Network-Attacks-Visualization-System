@@ -1,0 +1,34 @@
+---
+#  - hosts: elastic
+#    become: yes
+#    vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#    roles: 
+#     - ./roles/docker
+#  - hosts: rsyslog
+#    become: yes
+#    roles: 
+#       - ./roles/docker
+
+
+#  - hosts: rsyslog
+#    become: yes
+#    vars:
+#     ansible_python_interpreter: /usr/bin/python3
+#    roles:
+#      #- ./roles/rsyslog
+#      - ./roles/filebeat
+  
+
+    
+ - hosts: elastic
+   become: yes
+   vars:
+    ansible_python_interpreter: /usr/bin/python3
+   roles:
+    - ./roles/elasticsearch
+    - ./roles/logstash
+    - ./roles/kibana
+
+
+...

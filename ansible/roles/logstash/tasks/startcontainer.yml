@@ -1,0 +1,27 @@
+---
+
+- name: start logstash container
+  docker_container:
+    name: "{{ logstash_hostname }}"
+    image: "{{ logstash_image }}"
+    env:
+      LS_JAVA_OPTS: "-Xms4g -Xmx4g"  
+      SYNLITE_SURICATA_DICT_PATH: "/usr/share/logstash/synlite_suricata/dictionaries" 
+      SYNLITE_SURICATA_TEMPLATE_PATH: "/usr/share/logstash/synlite_suricata/templates"
+      SYNLITE_SURICATA_GEOIP_DB_PATH: "/usr/share/logstash/synlite_suricata/geoipdbs"
+      SYNLITE_SURICATA_ES_HOST: "elasticsearch"
+    ports:
+      - 5000:5000
+      - 5044:5044
+      - 9600:9600
+    volumes:
+      - "{{ elk_conf_dir }}/synlite_suricata:/usr/share/logstash/synlite_suricata"
+      - "{{ elk_conf_dir }}/synlite_suricata/conf.d:/usr/share/logstash/pipeline"
+      - "{{ elk_conf_dir }}/pipelines.yml:/usr/share/logstash/config/pipelines.yml"
+    links:
+      - "elasticsearch:elasticsearch"
+    networks:
+      - name: "{{ network_name }}" 
+    state: started
+
+...

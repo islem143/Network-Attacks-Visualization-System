@@ -1,0 +1,28 @@
+---
+
+
+- name: start kibana container
+  docker_container:
+   name: "{{ kibana_hostname }}"  
+   image: "{{ kibana_image }}"  
+   env:
+     ELASTICSEARCH_HOSTS: "http://{{ elasticsearch_hostname }}:9200"
+     SERVER_PORT: "5601"
+     #SERVER_HOST: "0.0.0.0"
+   ports:
+    - 5601:5601 
+   networks:
+    - name: "{{ network_name }}" 
+   links:
+     - "elasticsearch:elasticsearch"
+   state: started
+
+      
+
+...
+
+
+
+
+
+

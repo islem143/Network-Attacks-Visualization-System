@@ -1,0 +1,21 @@
+---
+# tasks file for rsyslog
+
+- name: copy rsyslog configuration file
+  template:
+    src:  templates/rsyslog.conf
+    dest: /etc/rsyslog.conf
+  
+- name: copy logrotation suricata.conf file
+  template:
+    src:  templates/suricata.conf
+    dest: /etc/logrotate.d
+  notify: restart rsyslog service
+ 
+   
+
+
+...
+
+
+

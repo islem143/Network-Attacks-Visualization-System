@@ -1,0 +1,46 @@
+---
+
+- name: create elasticsearch volume
+  docker_volume:
+   name: esdata
+   driver: local
+- name: Create a network
+  docker_network:
+    name: "{{ network_name }}"
+
+- name: start elasticseach container
+  docker_container:
+   name: "{{ elasticsearch_hostname }}"  
+   image: "{{ elasticsearch_image }}"  
+   env:
+    cluster.name: "es-docker-cluster"
+    discovery.type: "single-node"
+    indices.query.bool.max_clause_count: "8192"
+    search.max_buckets: "250000" 
+    bootstrap.memory_lock: "true"
+    ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+   volumes:
+    - "esdata:/usr/share/elasticsearch/data"
+   ports:
+    - 9200:9200 
+   ulimits:
+    - memlock:-1:-1
+   networks:
+    - name: "{{ network_name }}" 
+   state: started
+
+      
+
+
+   
+
+
+
+
+
+
+
+
+
+...
+# tasks file for elasticsearch

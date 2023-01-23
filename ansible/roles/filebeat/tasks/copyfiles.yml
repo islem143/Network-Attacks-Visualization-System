@@ -1,0 +1,9 @@
+---
+
+- name: copy filebeat.yml file
+  copy:
+    src: files/filebeat.yml
+    dest: "{{ filebeat_config_dir }}"
+
+
+...

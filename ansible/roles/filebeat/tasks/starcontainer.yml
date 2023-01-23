@@ -1,0 +1,17 @@
+---
+- name: create filebeat volume
+  docker_volume:
+   name: filebeat
+   driver: local
+
+- name: start filebeat container
+  docker_container:
+    name: "{{ filebeat_hostname }}"
+    image: "{{ filebeat_image }}"
+    volumes:
+    - "{{ filebeat_config_dir }}/filebeat.yml:/usr/share/filebeat/filebeat.yml"
+    - "{{ remote_log_dir }}/{{ pfsense_host }}:/usr/share/filebeat/logs"
+    - "filebeat:/usr/share/filebeat/data"
+    user: root
+
+...

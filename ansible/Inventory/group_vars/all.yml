@@ -1,0 +1,14 @@
+network_name: elastic
+elasticsearch_hostname: elasticsearch
+elasticsearch_image: docker.elastic.co/elasticsearch/elasticsearch:7.12.1
+logstash_hostname: logstash
+logstash_image: docker.elastic.co/logstash/logstash:7.12.1
+elk_conf_dir: /home/islem/Desktop/ansible
+filebeat_hostname: filebeat
+filebeat_image: docker.elastic.co/beats/filebeat:7.12.1
+filebeat_config_dir:  /home/islem/Desktop/ansible/
+remote_log_dir: /var/log/remotelogs
+pfsense_host: "192.168.57.10"
+kibana_image: docker.elastic.co/kibana/kibana:7.12.1
+kibana_hostname: "kibana"
+

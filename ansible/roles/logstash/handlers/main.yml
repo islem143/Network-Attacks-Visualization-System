@@ -1,0 +1,9 @@
+---
+- name: Restart logstash container
+  docker_container:
+    name: "{{ logstash_hostname }}"
+    restart: true
+
+
+...
+# handlers file for logstash

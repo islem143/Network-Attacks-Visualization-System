@@ -1,0 +1,31 @@
+---
+# tasks file for restart
+
+- name: stop logstash
+  docker_container:
+    name: logstash
+    image: "{{ logstash_image }}"
+    state: stopped
+
+- name: stop elasticsearch
+  docker_container:
+    name: elasticsearch
+    image: "{{ elasticsearch_image}}"
+    state: stopped
+
+- name: stop filebeat
+  docker_container:
+    name: filebeat
+    image: "{{ filebeat_image }}"
+    state: stopped
+
+
+
+
+
+
+
+
+
+...
+
