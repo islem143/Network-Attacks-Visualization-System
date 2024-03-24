@@ -3,12 +3,14 @@
 This repo contains my bachelor's degree final year project.
 It was about deploying a system for visualization of network attacks using the elastic stack.
 
-## Technologies used
+## **Technologies used**
+    + Ansible: For task automation on the servers.
+    + Docker for deploying the elastic stack.
+    + Pfsense firewall.
+    + Suricata IDS.
+  
 
-  - Ansible: For task automations on the servers.
-  - Docker for deploying the elastic stack.
-  - Pfsense firewall.
-  - Suricata IDS.
+
   
 
 ### Flow diagram
